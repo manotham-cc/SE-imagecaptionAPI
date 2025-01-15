@@ -13,12 +13,13 @@ def encode_image(image_path):
 
 
 # Path to your image
-image_path = "image\salmon.jpg"
+image_path = "image\krapaomoo-sub.jpg"
 
 # Getting the base64 string
 base64_image = encode_image(image_path)
 
 response = client.chat.completions.create(
+    #gpt-4o
     model="gpt-4o-mini",
     messages=[
         {
@@ -26,7 +27,23 @@ response = client.chat.completions.create(
             "content": [
                 {
                     "type": "text",
-                    "text": "Display only the nutrients and their approximate quantities(not in a range) in this food in JSON format.",
+                    "text": """
+                    "Generate the following details for a food item in JSON format:
+                    Menu: The name of the dish in (Thai Language) .
+                    Calorie: The calorie count of the dish.
+                    Carbs: The amount of carbohydrates in grams.
+                    Protein: The amount of protein in grams.
+                    Fat: The amount of fat in grams."
+                    #note no extra word!
+                    example1:
+                    {
+                    "Menu": "แกงส้มชะอมกุ้ง",
+                    "Calorie": "200",
+                    "Carbs": "15g",
+                    "Protein": "25g",
+                    "Fat": "10g"
+                    }
+                    """,
                 },
                 {
                     "type": "image_url",

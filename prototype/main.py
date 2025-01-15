@@ -45,7 +45,7 @@ async def process_image(file: UploadFile = File(...)):
                         "type": "text",
                         "text": """
                         "Generate the following details for a food item in JSON format:
-                        Menu: The name of the dish in Thai.
+                        Menu: The name of the dish in Thai, (Thai Language).
                         Calorie: The calorie count of the dish.
                         Carbs: The amount of carbohydrates in grams.
                         Protein: The amount of protein in grams.
